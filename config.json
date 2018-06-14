@@ -34,7 +34,7 @@
                 "description": "Day of the week"
               }
             ],
-            "type": "String",
+            "type": "ShiftCollection",
             "description": "Shifts for a particular day of the week"
           }
         ],
@@ -91,6 +91,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "67957512-cc8a-4f06-874c-2118d393c7a6",
+  "id": "7688caea-08d5-4163-91eb-c5dd7405a840",
   "files": []
 }
