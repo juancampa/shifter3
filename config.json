@@ -20,12 +20,43 @@
         "computedFields": [],
         "actions": [],
         "events": []
+      },
+      {
+        "name": "ShiftCollection",
+        "fields": [],
+        "computedFields": [],
+        "actions": [],
+        "events": []
+      },
+      {
+        "name": "Shift",
+        "fields": [
+          {
+            "name": "start",
+            "type": "String"
+          },
+          {
+            "name": "end",
+            "type": "String"
+          },
+          {
+            "name": "phone",
+            "type": "String"
+          },
+          {
+            "name": "name",
+            "type": "String"
+          }
+        ],
+        "computedFields": [],
+        "actions": [],
+        "events": []
       }
     ]
   },
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "e7832dd3-2eaf-43ff-8e65-c48fc56e82ed",
+  "id": "4ef4ec14-7267-48ef-b176-06793c337c88",
   "files": []
 }
