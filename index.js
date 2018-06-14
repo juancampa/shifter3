@@ -12,3 +12,29 @@ export async function init() {
 export async function timer({ key }) {
   // Called every time a timer fires
 }
+
+export const Root = {
+  async shifts({ args }) {
+    const records = await shiftTable.records.items.query(`{ fields }`);
+    return records.map((record) => {
+      const fields = JSON.parse(record.fields);
+      const key = Object.keys(fields).find((k) => k.toLowerCase() == args.day.toLowerCase());
+      const [start, end] = fields[key].split('-');
+      return {
+        start,
+        end,
+        name: fields.name,
+        phone: fields.phone,
+      };
+    });
+  }
+}
+
+export const ShiftCollection = {
+  one({ args }) {
+    return source.find((shift) => shift.name === args.name);
+  },
+  items({ }) {
+    return source;
+  }
+}
