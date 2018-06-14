@@ -1,0 +1,22 @@
+{
+  "dependencies": [],
+  "environment": [],
+  "endpoints": [],
+  "schema": {
+    "imports": [],
+    "types": [
+      {
+        "name": "Root",
+        "fields": [],
+        "computedFields": [],
+        "actions": [],
+        "events": []
+      }
+    ]
+  },
+  "expressions": [],
+  "database": [],
+  "tests": [],
+  "id": "__WIP__",
+  "files": []
+}
