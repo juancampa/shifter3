@@ -30,10 +30,12 @@
             "params": [
               {
                 "name": "day",
-                "type": "String"
+                "type": "String",
+                "description": "Day of the week"
               }
             ],
-            "type": "String"
+            "type": "String",
+            "description": "Shifts for a particular day of the week"
           }
         ],
         "actions": [],
@@ -89,6 +91,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "53a1a7ee-4835-4cdd-8637-52396b37fca6",
+  "id": "7cfea896-faa1-4e8f-9348-be4637fde983",
   "files": []
 }
