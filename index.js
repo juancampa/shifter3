@@ -1,4 +1,4 @@
-const { root } = program.refs
+const { root, twilio } = program.refs
 
 export async function init() {
   // Called when the program is run
