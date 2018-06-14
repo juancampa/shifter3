@@ -3,6 +3,10 @@
     {
       "name": "twilio",
       "type": "twilio:Root"
+    },
+    {
+      "name": "shiftTable",
+      "type": "airtable:Table"
     }
   ],
   "environment": [],
@@ -11,6 +15,9 @@
     "imports": [
       {
         "name": "twilio"
+      },
+      {
+        "name": "airtable"
       }
     ],
     "types": [
@@ -82,6 +89,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "bc4edc56-722a-4276-92c5-96a1bf7c0752",
+  "id": "53a1a7ee-4835-4cdd-8637-52396b37fca6",
   "files": []
 }
