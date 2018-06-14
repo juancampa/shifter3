@@ -1,7 +1,7 @@
 {
   "dependencies": [
     {
-      "name": "root",
+      "name": "twilio",
       "type": "twilio:Root"
     }
   ],
