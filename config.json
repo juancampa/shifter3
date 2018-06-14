@@ -1,9 +1,18 @@
 {
-  "dependencies": [],
+  "dependencies": [
+    {
+      "name": "root",
+      "type": "twilio:Root"
+    }
+  ],
   "environment": [],
   "endpoints": [],
   "schema": {
-    "imports": [],
+    "imports": [
+      {
+        "name": "twilio"
+      }
+    ],
     "types": [
       {
         "name": "Root",
@@ -17,6 +26,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "__WIP__",
+  "id": "e21bd59a-8c83-4637-8c6b-45ed1d257ec3",
   "files": []
 }
