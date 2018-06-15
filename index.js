@@ -42,7 +42,7 @@ export const ShiftCollection = {
 export const Shift = {
   self({ source, parent }) {
     console.log('SOURCE', source);
-    console.log('PARENT', parent, parent && parent.toString())
-    return parent.ref.push('one', { name: source.name });
+    console.log('PARENT', parent, parent && parent.toString());
+    return self || parent.ref.push('one', { name: source.name });
   }
 }
