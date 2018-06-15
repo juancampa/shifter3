@@ -31,10 +31,10 @@ export const Root = {
 }
 
 export const ShiftCollection = {
-  one({ args }) {
+  one({ args, source }) {
     return source.find((shift) => shift.name === args.name);
   },
-  items({ }) {
+  items({ source }) {
     return source;
   }
 }
