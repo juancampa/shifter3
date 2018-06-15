@@ -23,8 +23,8 @@ export const Root = {
       return {
         start,
         end,
-        name: fields.name,
-        phone: fields.phone,
+        name: fields.Name,
+        phone: fields.Phone,
       };
     });
   }
