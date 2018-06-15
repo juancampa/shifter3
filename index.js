@@ -41,6 +41,6 @@ export const ShiftCollection = {
 
 export const Shift = {
   self({ source, parent }) {
-    return parent.push('one', { name: source.name });
+    return parent.ref.push('one', { name: source.name });
   }
 }
