@@ -92,7 +92,10 @@
           {
             "name": "self",
             "params": [],
-            "type": "String"
+            "type": "Ref",
+            "ofType": {
+              "type": "Shift"
+            }
           }
         ],
         "actions": [],
@@ -103,6 +106,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "9652799b-48a8-4eb1-a6b6-6254c9a762a0",
+  "id": "3ea53aec-b39b-4f10-8ff8-d49d2af26698",
   "files": []
 }
