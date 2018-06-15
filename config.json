@@ -47,7 +47,13 @@
         "computedFields": [
           {
             "name": "one",
-            "params": [],
+            "params": [
+              {
+                "name": "name",
+                "type": "String",
+                "description": ""
+              }
+            ],
             "type": "Shift"
           },
           {
@@ -97,6 +103,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "9bbf62db-4c32-442f-b017-5c73ff11771f",
+  "id": "9652799b-48a8-4eb1-a6b6-6254c9a762a0",
   "files": []
 }
