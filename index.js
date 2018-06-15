@@ -15,7 +15,7 @@ export async function timer({ key }) {
 
 export const Root = {
   async shifts({ args }) {
-    const records = await shiftTable.records.items.query(`{ fields }`);
+    const records = await shiftTable.records.page.items.query(`{ fields }`);
     return records.map((record) => {
       const fields = JSON.parse(record.fields);
       const key = Object.keys(fields).find((k) => k.toLowerCase() == args.day.toLowerCase());
