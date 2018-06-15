@@ -38,3 +38,9 @@ export const ShiftCollection = {
     return source;
   }
 }
+
+export const Shift = {
+  self({ source, parent }) {
+    return parent.push('one', { name: source.name });
+  }
+}

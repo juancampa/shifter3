@@ -82,7 +82,13 @@
             "type": "String"
           }
         ],
-        "computedFields": [],
+        "computedFields": [
+          {
+            "name": "self",
+            "params": [],
+            "type": "String"
+          }
+        ],
         "actions": [],
         "events": []
       }
@@ -91,6 +97,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "7c6ad80c-282c-4f87-b493-a7e13b4f4104",
+  "id": "c762942f-af27-4d2e-b5be-3e6b2cc30869",
   "files": []
 }
