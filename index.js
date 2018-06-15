@@ -40,7 +40,7 @@ export const ShiftCollection = {
 }
 
 export const Shift = {
-  self({ source, parent }) {
+  self({ self, source, parent }) {
     console.log('SOURCE', source);
     console.log('PARENT', parent, parent && parent.toString());
     return self || parent.ref.push('one', { name: source.name });
