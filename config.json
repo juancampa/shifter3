@@ -100,12 +100,40 @@
         ],
         "actions": [],
         "events": []
+      },
+      {
+        "name": "Employee",
+        "fields": [
+          {
+            "name": "name",
+            "type": "String"
+          },
+          {
+            "name": "phone",
+            "type": "String"
+          }
+        ],
+        "computedFields": [],
+        "actions": [
+          {
+            "name": "sendMessage",
+            "params": [],
+            "type": "Void"
+          }
+        ],
+        "events": [
+          {
+            "name": "messageReceived",
+            "params": [],
+            "type": "Void"
+          }
+        ]
       }
     ]
   },
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "3ea53aec-b39b-4f10-8ff8-d49d2af26698",
+  "id": "d6ef57a3-ed49-441f-94cf-b64f663740c9",
   "files": []
 }
