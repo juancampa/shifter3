@@ -9,10 +9,6 @@ export async function init() {
   })
 }
 
-export async function timer({ key }) {
-  // Called every time a timer fires
-}
-
 export const Root = {
   async shifts({ args }) {
     const records = await shiftTable.records.page.items.query(`{ fields }`);
@@ -27,6 +23,11 @@ export const Root = {
         phone: fields.Phone,
       };
     });
+  },
+
+  async employees({ args }) {
+    // TODO
+    return [];
   }
 }
 
@@ -41,8 +42,21 @@ export const ShiftCollection = {
 
 export const Shift = {
   self({ self, source, parent }) {
-    console.log('SOURCE', source);
-    console.log('PARENT', parent, parent && parent.toString());
+    return self || parent.ref.pop().push('one', { name: source.name });
+  }
+}
+
+export const EmployeeCollection = {
+  one({ args, source }) {
+    return source.find((employee) => employee.name === args.name);
+  },
+  items({ source }) {
+    return source;
+  }
+}
+
+export const Employee = {
+  self({ self, source, parent }) {
     return self || parent.ref.pop().push('one', { name: source.name });
   }
 }

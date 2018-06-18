@@ -36,6 +36,11 @@
             ],
             "type": "ShiftCollection",
             "description": "Shifts for a particular day of the week"
+          },
+          {
+            "name": "employees",
+            "params": [],
+            "type": "EmployeeCollection"
           }
         ],
         "actions": [],
@@ -113,7 +118,13 @@
             "type": "String"
           }
         ],
-        "computedFields": [],
+        "computedFields": [
+          {
+            "name": "self",
+            "params": [],
+            "type": "String"
+          }
+        ],
         "actions": [
           {
             "name": "sendMessage",
@@ -128,12 +139,38 @@
             "type": "Void"
           }
         ]
+      },
+      {
+        "name": "EmployeeCollection",
+        "fields": [],
+        "computedFields": [
+          {
+            "name": "one",
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              }
+            ],
+            "type": "Employee"
+          },
+          {
+            "name": "items",
+            "params": [],
+            "type": "List",
+            "ofType": {
+              "type": "Employee"
+            }
+          }
+        ],
+        "actions": [],
+        "events": []
       }
     ]
   },
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "796b23da-04b2-4522-8375-de05f3f5b93c",
+  "id": "dc0dd879-2ec7-4582-89ce-2c5e188773f0",
   "files": []
 }
