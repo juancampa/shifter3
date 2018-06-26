@@ -1,11 +1,12 @@
 const { root, twilio, shiftTable } = program.refs
 
+const FROM = '+17864605016';
 export async function init() {
   // Called when the program is run
   return twilio.messages.sendSms({
-    from: '+17864605016',
+    from: FROM,
     to: '+17863005554',
-    body: 'Shifter - init'
+    body: 'Shifter - initialized'
   })
 }
 
@@ -64,5 +65,16 @@ export const EmployeeCollection = {
 export const Employee = {
   self({ self, source, parent }) {
     return self || parent.ref.pop().push('one', { name: source.name });
+  },
+
+  sendMessage({ self, args }) {
+    if (!args.text) {
+      return;
+    }
+    return twilio.messages.sendSms({
+      from: FROM,
+      to: await self.phone.query(),
+      body: args.text,
+    })
   }
 }

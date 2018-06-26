@@ -131,7 +131,12 @@
         "actions": [
           {
             "name": "sendMessage",
-            "params": [],
+            "params": [
+              {
+                "name": "text",
+                "type": "String"
+              }
+            ],
             "type": "Void"
           }
         ],
@@ -174,6 +179,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "e25c0519-3b33-489c-ad78-0fa6a1e14eaa",
+  "id": "a95bdc92-dbe3-4961-9920-46e4fa700f5d",
   "files": []
 }
