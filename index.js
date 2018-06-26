@@ -67,7 +67,7 @@ export const Employee = {
     return self || parent.ref.pop().push('one', { name: source.name });
   },
 
-  sendMessage({ self, args }) {
+  async sendMessage({ self, args }) {
     if (!args.text) {
       return;
     }
