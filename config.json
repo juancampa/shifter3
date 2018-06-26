@@ -122,7 +122,10 @@
           {
             "name": "self",
             "params": [],
-            "type": "String"
+            "type": "Ref",
+            "ofType": {
+              "type": "Employee"
+            }
           }
         ],
         "actions": [
@@ -171,6 +174,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "d6bceb87-a7c8-4347-95f1-04b54cf91c5f",
+  "id": "e25c0519-3b33-489c-ad78-0fa6a1e14eaa",
   "files": []
 }
