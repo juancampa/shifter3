@@ -26,8 +26,14 @@ export const Root = {
   },
 
   async employees({ args }) {
-    // TODO
-    return [];
+    const records = await shiftTable.records.page.items.query(`{ fields }`);
+    return records.map((record) => {
+      const fields = JSON.parse(record.fields);
+      return {
+        name: fields.Name,
+        phone: fields.Phone,
+      };
+    });
   }
 }
 
