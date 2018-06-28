@@ -20,7 +20,7 @@ export async function onSms({ sender, args }) {
   const employee = await root.employees
     .perItem(`{ phone name }`)
     .first(e => phoneEqual(e.phone, from));
-  console.log('SMS', e.name, body);
+  console.log('SMS', employee.name, body);
 }
 
 export const Root = {
