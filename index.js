@@ -7,7 +7,9 @@ export async function init() {
     body: 'Shifter - initialized'
   })
 
-  twilio.smsReceived.subscribe('onSms');
+  console.log('Subscribing')
+  await twilio.smsReceived.subscribe('onSms');
+  console.log('Subscribed')
 }
 
 export function update() {
