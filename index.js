@@ -2,7 +2,7 @@ const { root, twilio, shiftTable } = program.refs
 
 export async function init() {
   // Called when the program is run
-  return twilio.sendSms({
+  await twilio.sendSms({
     to: '+17863005554',
     body: 'Shifter - initialized'
   })
