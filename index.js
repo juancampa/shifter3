@@ -18,6 +18,8 @@ export function update() {
 
 export async function onSms({ sender, args }) {
   const { from, body } = args;
+  console.log('PER ITEM', root.employees.perItem);
+  console.log('Q', await root.employees.items.query('{ phone, name }'))
   for await (employee of root.employees.perItem(`{ phone name }`)) {
     console.log('Employee', employee)
     if (employee.phone && from.endsWith(employee.phone)) {
