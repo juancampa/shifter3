@@ -6,6 +6,16 @@ export async function init() {
     to: '+17863005554',
     body: 'Shifter - initialized'
   })
+
+  twilio.smsReceived.subscribe('onSms');
+}
+
+export function update() {
+  return init();
+}
+
+export async function onSms() {
+  console.log(event);
 }
 
 export const Root = {
