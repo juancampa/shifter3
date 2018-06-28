@@ -17,8 +17,8 @@ export function update() {
 }
 
 function phoneEqual(a, b) {
-  return a && b && a.replace(/[^0-9]/g, '').reverse().substr(0, 10) ===
-    b.replace(/[^0-9]/g, '').reverse().substr(0, 10);
+  const re = /(^\+1|[^0-9])/g;
+  return a && b && a.replace(re, '') === b.replace(re, '');
 }
 
 export async function onSms({ sender, args }) {
