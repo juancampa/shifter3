@@ -16,11 +16,16 @@ export function update() {
   return init();
 }
 
+function phoneEqual(a, b) {
+  return a && b && a.replace(/[^0-9]/g, '').reverse().substr(0, 10) ===
+    b.replace(/[^0-9]/g, '').reverse().substr(0, 10);
+}
+
 export async function onSms({ sender, args }) {
   const { from, body } = args;
   for await (employee of root.employees.perItem(`{ phone name }`)) {
     console.log('Employee', employee)
-    if (employee.phone && from.endsWith(employee.phone)) {
+    if (phoneEqual(from, employee.phone)) {
       console.log('FROM', employee.name, body);
       break;
     }
