@@ -17,8 +17,13 @@ export function update() {
 }
 
 export async function onSms({ sender, args }) {
-  console.log(sender);
-  console.log(args);
+  const { from, body } = args;
+  for await (employee of root.employees.perItem(`{ phone name }`)) {
+    if (employee.phone && from.endsWith(employee.phone)) {
+      console.log('FROM', employee.name, body);
+      break;
+    }
+  }
 }
 
 export const Root = {
