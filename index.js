@@ -16,8 +16,9 @@ export function update() {
   return init();
 }
 
-export async function onSms() {
-  console.log(event);
+export async function onSms({ sender, args }) {
+  console.log(sender);
+  console.log(args);
 }
 
 export const Root = {
