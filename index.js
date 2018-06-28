@@ -7,13 +7,7 @@ export async function init() {
     body: 'Shifter - initialized'
   })
 
-  console.log('Subscribing')
   await twilio.smsReceived.subscribe('onSms');
-  console.log('Subscribed')
-}
-
-export function update() {
-  return init();
 }
 
 function phoneEqual(a, b) {
