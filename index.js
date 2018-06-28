@@ -1,10 +1,8 @@
 const { root, twilio, shiftTable } = program.refs
 
-const FROM = '+17864605016';
 export async function init() {
   // Called when the program is run
-  return twilio.messages.sendSms({
-    from: FROM,
+  return twilio.sendSms({
     to: '+17863005554',
     body: 'Shifter - initialized'
   })
@@ -71,8 +69,7 @@ export const Employee = {
     if (!args.text) {
       return;
     }
-    return twilio.messages.sendSms({
-      from: FROM,
+    return twilio.sendSms({
       to: await self.phone.query(),
       body: args.text,
     })
