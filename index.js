@@ -17,12 +17,9 @@ function phoneEqual(a, b) {
 
 export async function onSms({ sender, args }) {
   const { from, body } = args;
-  for await (employee of root.employees.perItem(`{ phone name }`)) {
-    if (phoneEqual(from, employee.phone)) {
-      console.log('FROM', employee.name, body);
-      break;
-    }
-  }
+  const employee = root.employees
+    .perItem(`{ phone name }`)
+    .first(e => phoneEqual(e.phone, from));
 }
 
 export const Root = {
