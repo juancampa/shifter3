@@ -44,7 +44,7 @@ export const EmployeeCollection = {
 
 export const Employee = {
   self({ self, source, parent }) {
-    return parent.ref.pop().push('one', { name: source.name });
+    return self || parent.ref.pop().push('one', { name: source.name });
   },
   async sendMessage({ self, args }) {
     return twilio.sendSms({
