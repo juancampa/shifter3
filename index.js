@@ -22,6 +22,7 @@ export const Root = {
   async employees({ args }) {
     return employeeTable.records.perItem(`{ fields }`)
       map((record) => {
+        console.log('RECORD', record);
         const fields = JSON.parse(record.fields);
         return {
           name: fields.Name,
