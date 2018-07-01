@@ -21,8 +21,8 @@ export async function onSms({ sender, args }) {
 export const Root = {
   async employees({ args }) {
     return employeeTable.records.perItem(`{ fields }`)
-      .map(JSON.parse)
-      .map(({ Name: name, Phone: phone}) => ({ name, phone }))
+      .map(({ fields }) => JSON.parse(fields))
+      .map(({ Name: name, Phone: phone }) => ({ name, phone }))
       .toArray();
   }
 }
