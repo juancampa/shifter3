@@ -28,8 +28,7 @@ export const Root = {
           name: fields.Name,
           phone: fields.Phone,
         };
-      })
-      .toArray();
+      });
   }
 }
 
