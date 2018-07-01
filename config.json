@@ -1,16 +1,16 @@
 {
   "dependencies": [
     {
-      "name": "unused",
-      "type": "twilio:Root"
-    },
-    {
-      "name": "shiftTable",
+      "name": "employeeTable",
       "type": "airtable:Table"
     },
     {
       "name": "twilio",
       "type": "twilio:MessagingService"
+    },
+    {
+      "name": "talk",
+      "type": "talk:Root"
     }
   ],
   "environment": [],
@@ -22,6 +22,9 @@
       },
       {
         "name": "airtable"
+      },
+      {
+        "name": "talk"
       }
     ],
     "types": [
@@ -30,81 +33,9 @@
         "fields": [],
         "computedFields": [
           {
-            "name": "shifts",
-            "params": [
-              {
-                "name": "day",
-                "type": "String",
-                "description": "Day of the week"
-              }
-            ],
-            "type": "ShiftCollection",
-            "description": "Shifts for a particular day of the week"
-          },
-          {
             "name": "employees",
             "params": [],
             "type": "EmployeeCollection"
-          }
-        ],
-        "actions": [],
-        "events": []
-      },
-      {
-        "name": "ShiftCollection",
-        "fields": [],
-        "computedFields": [
-          {
-            "name": "one",
-            "params": [
-              {
-                "name": "name",
-                "type": "String",
-                "description": ""
-              }
-            ],
-            "type": "Shift"
-          },
-          {
-            "name": "items",
-            "params": [],
-            "type": "List",
-            "ofType": {
-              "type": "Shift"
-            }
-          }
-        ],
-        "actions": [],
-        "events": []
-      },
-      {
-        "name": "Shift",
-        "fields": [
-          {
-            "name": "start",
-            "type": "String"
-          },
-          {
-            "name": "end",
-            "type": "String"
-          },
-          {
-            "name": "phone",
-            "type": "String"
-          },
-          {
-            "name": "name",
-            "type": "String"
-          }
-        ],
-        "computedFields": [
-          {
-            "name": "self",
-            "params": [],
-            "type": "Ref",
-            "ofType": {
-              "type": "Shift"
-            }
           }
         ],
         "actions": [],
@@ -183,6 +114,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "8a85962f-2d6e-487c-a656-431c535e6604",
+  "id": "7fdf8503-5bb0-43e2-b6fd-92051fad257d",
   "files": []
 }
