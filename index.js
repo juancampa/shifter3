@@ -37,14 +37,15 @@ export const EmployeeCollection = {
 
 export const Employee = {
   self({ self, source, parent }) {
-    return self || parent.ref.pop().push('one', { name: source.name });
+    return self || parent.parent.one({ name: source.name });
   },
 }
 
 export const Channel = {
   async sendMessage({ self, args }) {
+    const employee = self.pop;
     return twilio.sendSms({
-      to: await self.phone.query(),
+      to: await self.parent.phone.query(),
       body: args.text,
     })
   }
