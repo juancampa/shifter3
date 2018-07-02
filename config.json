@@ -61,27 +61,15 @@
             "ofType": {
               "type": "Employee"
             }
-          }
-        ],
-        "actions": [
+          },
           {
-            "name": "sendMessage",
-            "params": [
-              {
-                "name": "text",
-                "type": "String"
-              }
-            ],
-            "type": "Void"
-          }
-        ],
-        "events": [
-          {
-            "name": "messageReceived",
+            "name": "channel",
             "params": [],
-            "type": "Void"
+            "type": "Channel"
           }
-        ]
+        ],
+        "actions": [],
+        "events": []
       },
       {
         "name": "EmployeeCollection",
@@ -108,12 +96,41 @@
         ],
         "actions": [],
         "events": []
+      },
+      {
+        "name": "Channel",
+        "fields": [],
+        "computedFields": [],
+        "actions": [
+          {
+            "name": "sendMessage",
+            "params": [
+              {
+                "name": "text",
+                "type": "String"
+              }
+            ],
+            "type": "Void"
+          }
+        ],
+        "events": [
+          {
+            "name": "messageReceived",
+            "params": [
+              {
+                "name": "text",
+                "type": "String"
+              }
+            ],
+            "type": "Void"
+          }
+        ]
       }
     ]
   },
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "086dba1a-b57d-453b-b648-0301a32be0d1",
+  "id": "a45d5c21-f41a-498f-9904-eef6be6d0d01",
   "files": []
 }

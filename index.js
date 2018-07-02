@@ -12,10 +12,10 @@ function phoneEqual(a, b) {
 
 export async function onSms({ sender, args }) {
   const { from, body } = args;
-  const employee = await root.employees
-    .perItem(`{ phone name }`)
+  const { self, name, phone } = await root.employees
+    .perItem(`{ self phone name }`)
     .first(e => phoneEqual(e.phone, from));
-  console.log('SMS', employee.name, body);
+  await self.messageReceived({ text: body })
 }
 
 export const Root = {
@@ -39,6 +39,9 @@ export const Employee = {
   self({ self, source, parent }) {
     return self || parent.ref.pop().push('one', { name: source.name });
   },
+}
+
+export const Channel = {
   async sendMessage({ self, args }) {
     return twilio.sendSms({
       to: await self.phone.query(),
