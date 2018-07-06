@@ -39,6 +39,12 @@ export const Employee = {
   self({ self, source, parent }) {
     return self || parent.parent.one({ name: source.name });
   },
+  // askShift() {
+  //   const { channel } = self;
+  //   const chat = talk.conversations.one({ channel });
+  //   const answer = await chat.ask({ text: `What was your shift?` });
+  //   await chat.replied.subscribe(onReply);
+  // }
 }
 
 export const Channel = {

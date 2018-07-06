@@ -51,6 +51,10 @@
           {
             "name": "phone",
             "type": "String"
+          },
+          {
+            "name": "channel",
+            "type": "Channel"
           }
         ],
         "computedFields": [
@@ -61,14 +65,15 @@
             "ofType": {
               "type": "Employee"
             }
-          },
-          {
-            "name": "channel",
-            "params": [],
-            "type": "Channel"
           }
         ],
-        "actions": [],
+        "actions": [
+          {
+            "name": "askShift",
+            "params": [],
+            "type": "String"
+          }
+        ],
         "events": []
       },
       {
@@ -131,6 +136,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "d1d0699b-e810-4d9f-8f2c-786667fe7a26",
+  "id": "7395046d-937b-47d5-a268-61477ef4967a",
   "files": []
 }
