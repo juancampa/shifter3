@@ -44,9 +44,8 @@ export const Employee = {
 export const Channel = {
   async sendMessage({ self, args }) {
     const employee = self.pop;
-    return twilio.sendSms({
-      to: await self.parent.phone.query(),
-      body: args.text,
-    })
+    const to = await self.parent.phone.query();
+    const body = args.text;
+    return twilio.sendSms({ to, body });
   }
 }
