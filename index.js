@@ -4,12 +4,6 @@ export async function init() {
   await twilio.smsReceived.subscribe('onSms');
 }
 
-// Compare phone numbers for equality
-function phoneEqual(a, b) {
-  const re = /(^\+1|[^0-9])/g;
-  return a && b && a.replace(re, '') === b.replace(re, '');
-}
-
 export async function onSms({ sender, args }) {
   const { from, body } = args;
   const { self, name, phone } = await root.employees
@@ -39,13 +33,21 @@ export const Employee = {
   self({ self, source, parent }) {
     return self || parent.parent.one({ name: source.name });
   },
-  // askShift() {
-  //   const { channel } = self;
-  //   const chat = talk.conversations.one({ channel });
-  //   const answer = await chat.ask({ text: `What was your shift?` });
-  //   await chat.replied.subscribe(onReply);
+  // askShift({ self }) {
+  //   const chat = talk.conversations.one({ channel: self.channel });
+  //   const question = await chat.ask({
+  //     text: `What was your shift?`,
+  //     context: self
+  //   });
+  //   await question.replied.subscribe('onReply');
   // }
 }
+
+// export function onReply({ args, sender, unsubscribe }) {
+//   const { question, answer, context } = args;
+//   console.log('REPLIED', context, question, ansert);
+//   await unsubscribe();
+// }
 
 export const Channel = {
   async sendMessage({ self, args }) {
@@ -54,4 +56,10 @@ export const Channel = {
     const body = args.text;
     return twilio.sendSms({ to, body });
   }
+}
+
+// Compare phone numbers for equality
+function phoneEqual(a, b) {
+  const re = /(^\+1|[^0-9])/g;
+  return a && b && a.replace(re, '') === b.replace(re, '');
 }
