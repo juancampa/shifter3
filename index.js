@@ -33,7 +33,7 @@ export const Employee = {
   self({ self, source, parent }) {
     return self || parent.parent.one({ name: source.name });
   },
-  askShift({ self }) {
+  async askShift({ self }) {
     const chat = talk.conversations.one({ channel: self.channel });
     const question = await chat.ask({
       text: `What was your shift?`,
