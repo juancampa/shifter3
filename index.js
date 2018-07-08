@@ -33,14 +33,15 @@ export const Employee = {
   self({ self, source, parent }) {
     return self || parent.parent.one({ name: source.name });
   },
-  // askShift({ self }) {
-  //   const chat = talk.conversations.one({ channel: self.channel });
-  //   const question = await chat.ask({
-  //     text: `What was your shift?`,
-  //     context: self
-  //   });
-  //   await question.replied.subscribe('onReply');
-  // }
+  askShift({ self }) {
+    const chat = talk.conversations.one({ channel: self.channel });
+    const question = await chat.ask({
+      text: `What was your shift?`,
+      context: self
+    });
+    console.log('QUESTION', question.ref);
+    //await question.replied.subscribe('onReply');
+  }
 }
 
 // export function onReply({ args, sender, unsubscribe }) {
