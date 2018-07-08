@@ -40,15 +40,15 @@ export const Employee = {
       context: self
     });
     console.log('QUESTION', question.ref);
-    await question.replied.subscribe('onReply');
+    await question.answered.subscribe('onReply');
   }
 }
 
-// export function onReply({ args, sender, unsubscribe }) {
-//   const { question, answer, context } = args;
-//   console.log('REPLIED', context, question, ansert);
-//   await unsubscribe();
-// }
+export async function onReply({ args, sender, unsubscribe }) {
+  const { question, answer, context } = args;
+  console.log('ANSWERED', context, question, ansert);
+  await unsubscribe();
+}
 
 export const Channel = {
   async sendMessage({ self, args }) {
