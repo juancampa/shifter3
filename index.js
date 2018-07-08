@@ -40,7 +40,7 @@ export const Employee = {
       context: self
     });
     console.log('QUESTION', question.ref);
-    //await question.replied.subscribe('onReply');
+    await question.replied.subscribe('onReply');
   }
 }
 
