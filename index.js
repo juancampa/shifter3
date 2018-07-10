@@ -39,7 +39,7 @@ export const Employee = {
       text: `What was your shift?`,
       context: self
     });
-    console.log('QUESTION', question.ref);
+    console.log('QUESTION', question.replied, question.answered);
     await question.answered.subscribe('onReply');
   }
 }
