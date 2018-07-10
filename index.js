@@ -10,7 +10,7 @@ export async function onSms({ sender, args }) {
     .perItem(`{ self phone name }`)
     .first(e => phoneEqual(e.phone, from));
   console.log(self, self.channel);
-  await self.channel.messageReceived({ text: body })
+  await self.channel.messageReceived.dispatch({ text: body })
 }
 
 export const Root = {
