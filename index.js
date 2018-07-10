@@ -9,6 +9,7 @@ export async function onSms({ sender, args }) {
   const { self, name, phone } = await root.employees
     .perItem(`{ self phone name }`)
     .first(e => phoneEqual(e.phone, from));
+  console.log(self, self.channel);
   await self.channel.messageReceived({ text: body })
 }
 
