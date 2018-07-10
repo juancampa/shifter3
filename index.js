@@ -47,7 +47,7 @@ export const Employee = {
 
 export async function onReply({ args, sender, unsubscribe }) {
   const { question, answer, context } = args;
-  console.log('ANSWERED', context, question, ansert);
+  console.log('ANSWERED', context, question, answer);
   await unsubscribe();
 }
 
