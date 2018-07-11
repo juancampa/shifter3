@@ -14,11 +14,11 @@ export async function onSms({ sender, args }) {
 }
 
 export const Root = {
-  async employees({ args, self }) {
+  async employees({ args }) {
     return employeeTable.records.perItem(`{ fields }`)
       .map(({ fields }) => JSON.parse(fields))
       .map(({ Name, Phone }) => {
-        const employee = self.one({ name: Name });
+        const employee = root.employees.one({ name: Name });
         return {
           name: Name,
           phone: Phone,
