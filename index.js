@@ -14,10 +14,17 @@ export async function onSms({ sender, args }) {
 }
 
 export const Root = {
-  async employees({ args }) {
+  async employees({ args, self }) {
     return employeeTable.records.perItem(`{ fields }`)
       .map(({ fields }) => JSON.parse(fields))
-      .map(({ Name: name, Phone: phone }) => ({ name, phone }));
+      .map(({ Name, Phone }) => {
+        const employee = self.one({ name: Name });
+        return {
+          name: Name,
+          phone: Phone,
+          conversation: talk.conversations.one({ channel: employee.channel })
+        };
+      });
   }
 }
 
@@ -31,8 +38,8 @@ export const EmployeeCollection = {
 }
 
 export const Employee = {
-  self({ self, source, parent }) {
-    return self || parent.parent.one({ name: source.name });
+  self({ source, parent }) {
+    return parent.parent.one({ name: source.name });
   },
   async askShift({ self }) {
     const chat = talk.conversations.one({ channel: self.channel });
@@ -40,20 +47,17 @@ export const Employee = {
       text: `What was your shift?`,
       context: self
     });
-    console.log('QUESTION', question, question.answered, Object.keys(question));
     await question.answered.subscribe('onReply');
   }
 }
 
 export async function onReply({ args, sender, unsubscribe }) {
   const { question, answer, context } = args;
-  console.log('ANSWERED', context, question, answer);
   await unsubscribe();
 }
 
 export const Channel = {
   async sendMessage({ self, args }) {
-    const employee = self.pop;
     const to = await self.parent.phone.query();
     const body = args.text;
     return twilio.sendSms({ to, body });

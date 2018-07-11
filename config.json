@@ -55,6 +55,13 @@
           {
             "name": "channel",
             "type": "Channel"
+          },
+          {
+            "name": "conversation",
+            "type": "Ref",
+            "ofType": {
+              "type": "talk:Conversation"
+            }
           }
         ],
         "computedFields": [
@@ -136,6 +143,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "fcc26071-ed64-4232-8ed0-642e86921ba0",
+  "id": "f715a34f-c625-4d26-9296-f0d9e3dbc497",
   "files": []
 }
