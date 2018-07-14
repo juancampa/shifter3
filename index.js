@@ -52,7 +52,8 @@ export const Employee = {
 export async function onReply({ args, sender, unsubscribe }) {
   const { question, answer, context } = args;
   console.log('GOT MESSAGE FROM', context.toString())
-  const { name, id } = await context.query(`{ name id }`);
+  const { name } = context.args;
+  const { id } = await root.employees.one({ name }).query(`{ id }`);
   const fields = {
     name: [id],
     message: answer
