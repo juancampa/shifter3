@@ -43,20 +43,19 @@ export const Employee = {
     const chat = talk.conversations.one({ channel: self.channel });
     const question = await chat.ask({
       text: `What was your shift?`,
-      context: self
+      context: root.questionContext({ employee: self, time: Date.now() })
     });
     await question.answered.subscribe('onReply');
   },
 
   registerAnswer: async ({ args, self }) => {
-    console.log('ARGS', args);
-    const { answer } = args;
+    const { answer, time } = args;
     const [start, end] = parseTime(answer);
     const fields = {
       name: [await self.recordId.query()],
       message: answer,
-      start,
-      end,
+      start: new Date(time),
+      end: new Date(time),
     };
     await hoursTable.createRecord({ fields: JSON.stringify(fields) })
   },
@@ -64,10 +63,11 @@ export const Employee = {
 
 export async function onReply({ args, sender, unsubscribe }) {
   const { question, answer, context } = args;
-  const { name } = context.args;
+  const { employee, time } = context.args;
+  const { name } = employee.args;
 
   // Register the reply
-  await root.employees.one({ name }).registerAnswer({ answer })
+  await root.employees.one({ name }).registerAnswer({ answer, time })
 
   // Unsubscribe to this question
   await unsubscribe();
