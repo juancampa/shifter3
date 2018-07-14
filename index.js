@@ -52,7 +52,7 @@ export const Employee = {
     console.log('ARGS', args);
     const { answer } = args;
     const [start, end] = parseTime(answer);
-    const record = {
+    const fields = {
       name: [await self.recordId.query()],
       message: answer,
       start,
