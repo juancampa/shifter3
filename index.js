@@ -53,7 +53,7 @@ export const Employee = {
     const { answer } = args;
     const [start, end] = parseTime(answer);
     const record = {
-      name: [await self.registerId.query()],
+      name: [await self.recordId.query()],
       message: answer,
       start,
       end,
