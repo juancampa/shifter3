@@ -11,6 +11,10 @@
     {
       "name": "talk",
       "type": "talk:Root"
+    },
+    {
+      "name": "hoursTable",
+      "type": "airtable:Table"
     }
   ],
   "environment": [],
@@ -55,13 +59,6 @@
           {
             "name": "channel",
             "type": "Channel"
-          },
-          {
-            "name": "conversation",
-            "type": "Ref",
-            "ofType": {
-              "type": "talk:Conversation"
-            }
           }
         ],
         "computedFields": [
@@ -71,6 +68,14 @@
             "type": "Ref",
             "ofType": {
               "type": "Employee"
+            }
+          },
+          {
+            "name": "conversation",
+            "params": [],
+            "type": "Ref",
+            "ofType": {
+              "type": "talk:Conversation"
             }
           }
         ],
@@ -143,6 +148,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "461a5c7a-8f37-4e48-94ec-12b7335c22f1",
+  "id": "ce938b32-0b73-4d41-bdb0-3c43145b59f9",
   "files": []
 }

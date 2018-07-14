@@ -1,64 +1,65 @@
-const { root, twilio, employeeTable, talk } = program.refs
+const { root, twilio, employeeTable, hoursTable, talk } = program.refs
 
 export async function init() {
   await twilio.smsReceived.subscribe('onSms');
 }
 
+// Map an SMSs to an Employee and dispatch an event on it
 export async function onSms({ sender, args }) {
   const { from, body } = args;
   const { self, name, phone } = await root.employees
     .perItem(`{ self phone name }`)
     .first(e => phoneEqual(e.phone, from));
-  console.log(self, self.channel);
+
+  // Dispatch an event on the employee
   await self.channel.messageReceived.dispatch({ text: body })
 }
 
 export const Root = {
-  async employees({ args }) {
-    return employeeTable.records.perItem(`{ fields }`)
+  employees({ args }) {
+    // Map airtable records to employees
+    return employeeTable.records
+      .perItem(`{ fields }`)
       .map(({ fields }) => JSON.parse(fields))
-      .map(({ Name, Phone }) => {
-        const employee = root.employees.one({ name: Name });
-        return {
-          name: Name,
-          phone: Phone,
-          conversation: talk.conversations.one({ channel: employee.channel })
-        };
-      });
   }
 }
 
 export const EmployeeCollection = {
-  one({ args, source }) {
-    return source.find((employee) => employee.name === args.name);
-  },
-  items({ source }) {
-    return source;
-  }
+  one: ({ args, source }) =>
+    source.find((employee) => employee.name === args.name),
+
+  items: ({ source }) =>
+    source,
 }
 
 export const Employee = {
-  self({ source, parent }) {
-    return parent.parent.one({ name: source.name });
-  },
-  async askShift({ self }) {
+  self: ({ source, parent }) =>
+    parent.parent.one({ name: source.name }),
+  
+  conversation: ({ self }) =>
+    talk.conversations.one({ channel: self.channel }),
+
+  askShift: async ({ self }) => {
     const chat = talk.conversations.one({ channel: self.channel });
     const question = await chat.ask({
       text: `What was your shift?`,
       context: self
     });
     await question.answered.subscribe('onReply');
-  } 
+  },
 }
 
 export async function onReply({ args, sender, unsubscribe }) {
   const { question, answer, context } = args;
   console.log('GOT MESSAGE FROM', context.toString())
+  const { name } = context.args;
+  const 
+  await hoursTable.createRecord(`{ name: ${name}`)
   await unsubscribe();
 }
 
 export const Channel = {
-  async sendMessage({ self, args }) {
+  sendMessage: async ({ self, args }) => {
     const to = await self.parent.phone.query();
     const body = args.text;
     return twilio.sendSms({ to, body });
