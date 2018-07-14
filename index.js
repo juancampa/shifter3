@@ -19,8 +19,8 @@ export const Root = {
   employees({ args }) {
     // Map airtable records to employees
     return employeeTable.records
-      .perItem(`{ fields }`)
-      .map(({ fields }) => JSON.parse(fields))
+      .perItem(`{ id fields }`)
+      .map(({ id, fields }) => ({ id, ...JSON.parse(fields) }))
   }
 }
 
@@ -52,9 +52,9 @@ export const Employee = {
 export async function onReply({ args, sender, unsubscribe }) {
   const { question, answer, context } = args;
   console.log('GOT MESSAGE FROM', context.toString())
-  const { name } = context.args;
+  const { name, id } = await context.query(`{ name id }`);
   const fields = {
-    name,
+    name: [id],
     message: answer
   };
   await hoursTable.createRecord(JSON.stringify(fields))

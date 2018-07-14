@@ -59,6 +59,10 @@
           {
             "name": "channel",
             "type": "Channel"
+          },
+          {
+            "name": "id",
+            "type": "String"
           }
         ],
         "computedFields": [
@@ -148,6 +152,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "c56f9e3c-c1d0-4e95-b4b7-1db5aae5359f",
+  "id": "62980209-51a9-4d49-8801-581d082d8589",
   "files": []
 }
