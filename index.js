@@ -55,6 +55,7 @@ export async function onReply({ args, sender, unsubscribe }) {
   const { name } = context.args;
   const fields = {
     name,
+    message: answer
   };
   await hoursTable.createRecord(JSON.stringify(fields))
   await unsubscribe();
