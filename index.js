@@ -48,11 +48,12 @@ export const Employee = {
       context: self
     });
     await question.answered.subscribe('onReply');
-  }
+  } 
 }
 
 export async function onReply({ args, sender, unsubscribe }) {
   const { question, answer, context } = args;
+  console.log('GOT MESSAGE FROM', context.toString())
   await unsubscribe();
 }
 
@@ -64,7 +65,7 @@ export const Channel = {
   }
 }
 
-// Compare phone numbers for equality
+// Compare phone numbers for equality ignoring weird chars and +1
 function phoneEqual(a, b) {
   const re = /(^\+1|[^0-9])/g;
   return a && b && a.replace(re, '') === b.replace(re, '');
