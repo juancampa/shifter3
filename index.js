@@ -49,6 +49,7 @@ export const Employee = {
   },
 
   registerAnswer: async ({ args, self }) => {
+    console.log('ARGS', args);
     const { answer } = args;
     const [start, end] = parseTime(answer);
     const record = {
