@@ -61,8 +61,9 @@
             "type": "Channel"
           },
           {
-            "name": "id",
-            "type": "String"
+            "name": "recordId",
+            "type": "String",
+            "description": "Record ID in Airtable"
           }
         ],
         "computedFields": [
@@ -88,6 +89,16 @@
             "name": "askShift",
             "params": [],
             "type": "String"
+          },
+          {
+            "name": "registerAnswer",
+            "params": [
+              {
+                "name": "anwser",
+                "type": "String"
+              }
+            ],
+            "type": "Void"
           }
         ],
         "events": []
@@ -152,6 +163,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "647edeb3-ada2-4424-abe1-3014d5b5f635",
+  "id": "6bd090e9-168b-463e-bba8-e9c385a04212",
   "files": []
 }

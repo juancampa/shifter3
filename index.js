@@ -20,7 +20,7 @@ export const Root = {
     // Map airtable records to employees
     return employeeTable.records
       .perItem(`{ id fields }`)
-      .map(({ id, fields }) => ({ id, ...JSON.parse(fields) }))
+      .map(({ id: recordId, fields }) => ({ recordId, ...JSON.parse(fields) }))
   }
 }
 
@@ -47,18 +47,28 @@ export const Employee = {
     });
     await question.answered.subscribe('onReply');
   },
+
+  registerAnswer: async ({ args, self }) => {
+    const { answer } = args;
+    const [start, end] = parseTime(answer);
+    const record = {
+      name: [await self.id.query()],
+      message: answer,
+      start,
+      end,
+    };
+    await hoursTable.createRecord({ fields: JSON.stringify(fields) })
+  },
 }
 
 export async function onReply({ args, sender, unsubscribe }) {
   const { question, answer, context } = args;
-  console.log('GOT MESSAGE FROM', context.toString())
   const { name } = context.args;
-  const { id } = await root.employees.one({ name }).query(`{ id }`);
-  const fields = {
-    name: [id],
-    message: answer
-  };
-  await hoursTable.createRecord({ fields: JSON.stringify(fields) })
+
+  // Register the reply
+  await root.employees.one({ name }).registerAnswer({ answer })
+
+  // Unsubscribe to this question
   await unsubscribe();
 }
 
@@ -74,4 +84,9 @@ export const Channel = {
 function phoneEqual(a, b) {
   const re = /(^\+1|[^0-9])/g;
   return a && b && a.replace(re, '') === b.replace(re, '');
+}
+
+function parseTime(str) {
+  const [first, second] = str.split(' ')
+  return [first, second];
 }
