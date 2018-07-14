@@ -94,7 +94,7 @@
             "name": "registerAnswer",
             "params": [
               {
-                "name": "anwser",
+                "name": "answer",
                 "type": "String"
               }
             ],
@@ -163,6 +163,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "f77fd026-7cb1-4a18-8b6a-4ff35ff0581f",
+  "id": "d813a0a8-8463-4082-878b-81a2c820f460",
   "files": []
 }
