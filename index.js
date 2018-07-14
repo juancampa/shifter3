@@ -58,7 +58,7 @@ export async function onReply({ args, sender, unsubscribe }) {
     name: [id],
     message: answer
   };
-  await hoursTable.createRecord(JSON.stringify(fields))
+  await hoursTable.createRecord({ fields: JSON.stringify(fields) })
   await unsubscribe();
 }
 
