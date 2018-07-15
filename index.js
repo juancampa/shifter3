@@ -62,9 +62,9 @@ export const Employee = {
 }
 
 export async function onReply({ args, sender, unsubscribe }) {
-  const { question, answer, context } = args;
-  const { employee, time } = context.args;
-  const { name } = employee.args;
+  const { answer, context } = args;
+  const { name } = context.args;
+  const { answer: { time } } = sender.query(`{ answer { time } }`)
 
   // Register the reply
   await root.employees.one({ name }).registerAnswer({ answer, time })
