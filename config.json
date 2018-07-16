@@ -116,7 +116,7 @@
               },
               {
                 "name": "time",
-                "type": "Int"
+                "type": "String"
               }
             ],
             "type": "Void"
@@ -184,6 +184,6 @@
   "expressions": [],
   "database": [],
   "tests": [],
-  "id": "5cb5398d-8d5f-4976-9e34-89898110847d",
+  "id": "0d1e1b18-8b2f-449b-a8d2-b36b65faabc8",
   "files": []
 }
