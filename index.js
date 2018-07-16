@@ -63,7 +63,6 @@ export const Employee = {
 
 export async function onReply({ args, sender, unsubscribe }) {
   const { answer, context } = args;
-  console.log('CONTEXT', context);
   const { name } = context.args;
   const { answer: { time } } = await sender.query(`{ answer { time } }`)
 
