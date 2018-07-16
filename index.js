@@ -43,7 +43,7 @@ export const Employee = {
     const chat = talk.conversations.one({ channel: self.channel });
     const question = await chat.ask({
       text: `What was your shift?`,
-      context: root.questionContext({ employee: self, time: Date.now() })
+      context: self,
     });
     await question.answered.subscribe('onReply');
   },
@@ -63,6 +63,7 @@ export const Employee = {
 
 export async function onReply({ args, sender, unsubscribe }) {
   const { answer, context } = args;
+  console.log('CONTEXT', context);
   const { name } = context.args;
   const { answer: { time } } = await sender.query(`{ answer { time } }`)
 
