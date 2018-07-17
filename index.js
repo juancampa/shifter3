@@ -1,3 +1,4 @@
+import * as lodash from 'lodash';
 const { root, twilio, employeeTable, hoursTable, talk } = program.refs
 
 export async function init() {
