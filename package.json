@@ -1,6 +1,8 @@
 {
   "name": "shifter3",
   "version": "1.0.115",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.10"
+  },
   "license": "MIT"
 }
